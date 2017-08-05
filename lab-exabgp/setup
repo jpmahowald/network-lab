@@ -246,7 +246,7 @@ start_vm () {
     done
     IFS="$saveifs"
 
-    log_info_msg "Start VM $name"
+    log_info_msg "Start VM $name $netargs"
     # /root is mounted with version 9p2000.u to allow access to /dev,
     # /sys and to mount new partitions over them. This is not the case
     # for 9p2000.L.
@@ -465,6 +465,7 @@ case $$,$STATE in
         sleep 0.5               # Some interfaces may take some time to appear
         for intf in /sys/class/net/*; do
             intf=$(basename $intf)
+            log_info_msg "Setup interface $intf"
             ip a l dev $intf 2> /dev/null >/dev/null || continue
             case $intf in
                 lo|eth*|dummy*)
