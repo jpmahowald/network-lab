@@ -255,7 +255,7 @@ start_vm () {
         echo
         exec start-stop-daemon --make-pidfile --pidfile "$TMP/vm-$name.pid" \
         --start --startas $(which qemu-system-x86_64) -- \
-        -enable-kvm \
+        ${QEMUOPTS} \
         -nodefconfig -nodefaults \
         -display none \
         -m ${MEM:-128M} \
