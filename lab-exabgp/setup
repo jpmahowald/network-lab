@@ -283,7 +283,7 @@ start_vm () {
         -kernel $KERNEL \
         -no-reboot \
         -initrd $TMP/initrd.gz \
-        -append "uts=$name console=ttyS0 panic=1 TERM=$TERM quiet" \
+        -append "uts=$name console=ttyS0 panic=1 TERM=$TERM quiet net.ifnames=0 biosdevname=0" \
         $netargs \
         $@
 EOF
